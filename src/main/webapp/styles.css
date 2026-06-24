@@ -169,4 +169,27 @@ button:active {
     min-height: 78px;
     padding: 14px 22px;
   }
+  
+  .duke-button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.duke-button img {
+  width: 280px;
+  height: auto;
+  display: block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.duke-button:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.duke-button:active img {
+  transform: scale(0.25);
+}
 }
