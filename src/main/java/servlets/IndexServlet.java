@@ -1,14 +1,15 @@
 package servlets;
 
+import java.io.IOException;
+
+import data.FakeDataManager;
+import data.QuizDataManager;
+import data.beans.Quiz;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-import data.FakeDataManager;
-import data.QuizDataManager;
 
 /**
  * Servlet implementation class IndexServlet
@@ -39,9 +40,10 @@ public class IndexServlet extends HttpServlet {
 		QuizDataManager mng = new FakeDataManager();
 //		String input = request.getParameter("textInput");
 		
-		// Die Erste Frage wird in die Session als Attribute gespeichert
-		request.getSession().setAttribute("quiz", mng.getQuiz());
-		
+		Quiz q = mng.getQuiz();
+		System.out.println(q.getQuestions().get(0).getText());
+//		// Die Erste Frage wird in die Session als Attribute gespeichert
+		request.getSession().setAttribute("quiz", mng.getQuiz());		
 		response.sendRedirect("Question.jsp");
 
 	}

@@ -40,7 +40,7 @@ public class FakeDataManager implements QuizDataManager {
 		java.addQuestion(quest);
 
 		quest.addAnswer(new Answer("private", false));
-		quest.addAnswer(new Answer("stacic", false));
+		quest.addAnswer(new Answer("static", false));
 		quest.addAnswer(new Answer("void", true));
 		quest.addAnswer(new Answer("String", false));
 //		quest.setInfo(

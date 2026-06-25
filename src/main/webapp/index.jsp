@@ -21,7 +21,6 @@
 
 	<h1>Halli hallo hier</h1>
 	<form action="IndexServlet" method="post">
-		Gebe hier einen Text ein: <input type="text" name="textInput" size="40"> 
 		<input type="submit" value="Submit zum IndexServlet" />
 	</form>
 
