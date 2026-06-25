@@ -2,9 +2,9 @@ package servlets;
 
 import java.io.IOException;
 
+import data.ExampleFormularFakeManager;
 import data.FakeDataManager;
-import data.QuizDataManager;
-import data.beans.Quiz;
+import data.beans.ExampleFormularBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -37,15 +37,10 @@ public class IndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		QuizDataManager mng = new FakeDataManager();
-//		String input = request.getParameter("textInput");
-		
-		Quiz q = mng.getQuiz();
-		System.out.println(q.getQuestions().get(0).getText());
-//		// Die Erste Frage wird in die Session als Attribute gespeichert
-		request.getSession().setAttribute("quiz", mng.getQuiz());		
-		response.sendRedirect("Question.jsp");
-
+		ExampleFormularBean bean = ExampleFormularFakeManager.getTestData();
+		request.getSession().setAttribute("data", bean);
+			
+		response.sendRedirect("ExampleFormular.jsp");
 	}
-
+	
 }
