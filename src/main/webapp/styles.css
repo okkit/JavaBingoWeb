@@ -3,11 +3,14 @@
 }
 
 html, body {
-	margin: 100px;
-	height: 50%;
+	margin: 0px;
 }
 
 body {
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* oben */
+    align-items: flex-start;     /* links */
 	background: #FFF;
 	width: min(100vw, 1800px);
 	color: #000;

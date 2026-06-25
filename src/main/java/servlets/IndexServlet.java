@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 
 import data.ExampleFormularFakeManager;
-import data.FakeDataManager;
 import data.beans.ExampleFormularBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
