@@ -1,6 +1,6 @@
-package data;
+package example.data;
 
-import data.beans.ExampleFormularBean;
+import example.data.beans.ExampleFormularBean;
 
 /**
  * Definiert die Snittstelle zwischen dem Userinterface und der Datenschicht.

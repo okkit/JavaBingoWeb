@@ -1,9 +1,9 @@
-package servlets;
+package example.servlets;
 
 import java.io.IOException;
 
-import data.ExampleFormularFakeManager;
-import data.beans.ExampleFormularBean;
+import example.data.ExampleFormularFakeManager;
+import example.data.beans.ExampleFormularBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,14 +13,14 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/IndexServlet")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/example/ExampleServlet")
+public class ExampleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexServlet() {
+    public ExampleServlet() {
         super();
     }
 

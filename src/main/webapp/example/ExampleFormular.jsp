@@ -3,8 +3,8 @@
 <!--  Die Annotation unten entspricht einer import-Anweisung in Java.  
 Die Klasse ExampleFormularBean wird hier im weiteren Java-Code gebraucht. -->
 
-<%@page import="data.beans.ExampleFormularBean"%>
-<%@page import="servlets.Constants"%>
+<%@page import="example.data.beans.ExampleFormularBean"%>
+<%@page import="example.servlets.Constants"%>
 
 <!-- Vorbereitungen treffen mit Java-Code unter Verwendung der Bean -->
 <!-- Die Bean wurde im Servlet in der Session als Attribut abgelegt -->
@@ -28,7 +28,7 @@ if (msg == null)
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ein Beispielformular</title>
 </head>
 <body>
 	<main class="quiz" aria-label="Example Formular">
@@ -60,9 +60,10 @@ if (msg == null)
 		</div>
 			<label id = "msg"><%=msg%></label>
 
-<!-- Java script zum leeren der Eingabefelder -->
+<!-- JavaScript zum leeren der Eingabefelder -->
 		<script>
 			function startNewTask() {
+
 				document.getElementById("title").value = "";
 				document.getElementById("description").value = "";
 				document.getElementById("done").checked = "";

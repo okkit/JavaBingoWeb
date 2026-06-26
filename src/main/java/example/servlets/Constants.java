@@ -1,4 +1,4 @@
-package servlets;
+package example.servlets;
 
 /**
  * Please use this Constants-Class also in the JSPs

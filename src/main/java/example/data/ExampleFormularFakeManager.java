@@ -1,6 +1,6 @@
-package data;
+package example.data;
 
-import data.beans.ExampleFormularBean;
+import example.data.beans.ExampleFormularBean;
 
 /**
  * Implementiert die Schnittstelle zwischen der GUI-Schicht und der Datenzugriffsschicht.<br>
