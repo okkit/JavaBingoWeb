@@ -3,22 +3,29 @@ package example.data.beans;
 import java.io.Serializable;
 
 /**
- * Ein Java-Bean ist eine Klasse zum temporären Speichern von Daten. <br>
+ * Eine Java-Bean ist eine Klasse zum temporï¿½ren Speichern von Daten. <br>
  * Zum Beispiel zum Speichern der Benutzereingaben von der GUI.<br>
  * 
- * Ein Java-Bean bestäht lediglich aus Feldern. Keine Methoden.<br>
+ * Ein Java-Bean bestï¿½ht lediglich aus Feldern. Keine Methoden.<br>
  * 
- * Diese Bohne enthält Felder für die Daten eines Beispielformulars.
+ * Diese Bohne enthï¿½lt Felder fï¿½r die Daten eines Beispielformulars.
  */
-public class ExampleFormularBean implements Serializable{
+public class TaskBean implements Serializable{
 	
 	public static final long serialVersionUID = 1L;
 	
+	private String id;
 	private String taskTitle;
 	private String taskInfo;
 	private boolean done;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getTaskTitle() {
 		return taskTitle;
 	}

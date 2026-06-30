@@ -2,8 +2,6 @@ package example.servlets;
 
 import java.io.IOException;
 
-import example.data.ExampleFormularFakeManager;
-import example.data.beans.ExampleFormularBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -35,11 +33,8 @@ public class ExampleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ExampleFormularBean bean = ExampleFormularFakeManager.getTestData();
-		request.getSession().setAttribute("data", bean);
-			
-		response.sendRedirect("ExampleFormular.jsp");
+
+		response.sendRedirect("TaskList.jsp");
 	}
 	
 }

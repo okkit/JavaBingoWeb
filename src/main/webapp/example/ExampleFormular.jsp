@@ -3,7 +3,7 @@
 <!--  Die Annotation unten entspricht einer import-Anweisung in Java.  
 Die Klasse ExampleFormularBean wird hier im weiteren Java-Code gebraucht. -->
 
-<%@page import="example.data.beans.ExampleFormularBean"%>
+<%@page import="example.data.beans.TaskBean"%>
 <%@page import="example.servlets.Constants"%>
 
 <!-- Vorbereitungen treffen mit Java-Code unter Verwendung der Bean -->
@@ -11,7 +11,7 @@ Die Klasse ExampleFormularBean wird hier im weiteren Java-Code gebraucht. -->
 <!-- Session-Attribute haben dieselbe Lebensdauer, wie die Session selbst -->
 <!-- Java-Code kann in HTML-Text an jeder Stelle plaziert werden -->
 <%
-ExampleFormularBean bean = (ExampleFormularBean) session.getAttribute(Constants.ATTR_DATA);
+TaskBean bean = (TaskBean) session.getAttribute(Constants.ATTR_DATA);
 String title = "";
 String info = "";
 boolean done = false;

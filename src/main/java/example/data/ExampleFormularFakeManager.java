@@ -1,18 +1,37 @@
 package example.data;
 
-import example.data.beans.ExampleFormularBean;
+import example.data.beans.TaskBean;
+import example.data.beans.TaskListBean;
+import example.data.fake.FakeDataBase;
 
 /**
  * Implementiert die Schnittstelle zwischen der GUI-Schicht und der Datenzugriffsschicht.<br>
  * 
  * Diese Klasse ist keine Schittstelle zu einer Datenpersistenz, sie simuliert nur eine.<br>
- * Sie ist gut zu gebrauchen, wenn man GUI implementiert und Testdaten benötigt.
+ * Sie ist gut zu gebrauchen, wenn man GUI implementiert und Testdaten benï¿½tigt.
  * 
  */
 public class ExampleFormularFakeManager implements ExampleFormularDataManager {
-
+	
+	TaskListBean beanList;
+	
+	/**
+	 * Liefert eine Bean-Instanze mit Fake-Daten
+	 * @return
+	 */
+	public static TaskBean getTestData() {
+		
+		TaskBean bean = new TaskBean();
+		
+		bean.setTaskTitle("Test-Task");
+		bean.setTaskInfo("Das sind Testdaten um zu testen, ob sie angezeigt werden kï¿½nnen");
+		bean.setDone(true);
+		
+		return bean;
+	}
+	
 	@Override
-	public String saveFormular(ExampleFormularBean form) {
+	public String saveFormular(TaskBean form) {
 		
 		if (form == null)
 			return ERR_NO_DATA;
@@ -20,15 +39,19 @@ public class ExampleFormularFakeManager implements ExampleFormularDataManager {
 			return ERR_NO_TITLE;
 		return MSG_SUCCESS;
 	}
-	
-	public static ExampleFormularBean getTestData() {
+
+	@Override
+	public TaskListBean loadTaskList() {
 		
-		ExampleFormularBean bean = new ExampleFormularBean();
+		beanList = new TaskListBean();
+		beanList.setList(FakeDataBase.selectAllFromTask());
 		
-		bean.setTaskTitle("Test-Task");
-		bean.setTaskInfo("Das sind Testdaten um zu testen, ob sie angezeigt werden können");
-		bean.setDone(true);
-		
-		return bean;
+		return beanList;
+	}
+
+	@Override
+	public TaskBean getTaskById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

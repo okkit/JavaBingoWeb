@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import example.data.ExampleFormularDataManager;
 import example.data.ExampleFormularFakeManager;
-import example.data.beans.ExampleFormularBean;
+import example.data.beans.TaskBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,12 +25,9 @@ public class ExampleFormularServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-//	zum Testen, ob Request stattgefunden hat	
-//		System.out.println("Im ExampleFormularServlet");
-
 		String responseMessage = "";
 
-		ExampleFormularBean bean = new ExampleFormularBean();
+		TaskBean bean = new TaskBean();
 		bean.setTaskTitle(request.getParameter(Constants.PARAM_TITLE));
 		bean.setTaskInfo(request.getParameter(Constants.PARAM_INFO));
 		boolean done = request.getParameter(Constants.PARAM_DONE) != null;
