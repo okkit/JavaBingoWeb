@@ -24,23 +24,54 @@ public class ExampleFormularServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String responseMessage = "";
+		// Anhand der Request-Parameter wird überprüft, was hier zu tun ist
 
-		TaskBean bean = new TaskBean();
-		bean.setTaskTitle(request.getParameter(Constants.PARAM_TITLE));
-		bean.setTaskInfo(request.getParameter(Constants.PARAM_INFO));
-		boolean done = request.getParameter(Constants.PARAM_DONE) != null;
-		bean.setDone(done);
+		// Parameter für die Task-ID holen aus dem Request holen
+		Object param = request.getParameter("task");
 
-		ExampleFormularDataManager manager = new ExampleFormularFakeManager();
-		responseMessage = manager.saveFormular(bean);
+		// Wenn es diesen Parameter im Request gibt:
+		if (param != null) {
+			// Den Parameter müssen wird zum Integer parsen:
+			// Beim Parsen kann eine Exception geworfen werden. Machen wir ein try-catch Blok
+			try {
+				int id = Integer.parseInt((String) param);
+				
+				// Und holen den entsprechenden Task mithilfe des DataManager-Interface:
+				ExampleFormularDataManager mng = new ExampleFormularFakeManager();
+				TaskBean task = mng.getTaskById(id);
+				
+				// Verpacken die Bean im Request
+				request.getSession().setAttribute(Constants.ATTR_DATA, task);
 
-		request.getSession().setAttribute(Constants.ATTR_DATA, bean);
+				// und leiten die Anzeige zur ExampleFormual.jsp:
+				request.getRequestDispatcher(Constants.JSP_FORMULAR).forward(request, response);
+				
+			} catch (NumberFormatException e) {
+				// In diesem Fall bleiben wir bei der Anzeige der Liste
+				request.getRequestDispatcher("TaskList.jsp").forward(request, response);
+				// TODO eine entsprechende Meldung auf der JSP anzeigen
+			}
+		}
+		//
+		else { // Es gibt den Parameter für den Task nicht im Request gibt,
+				// also es wird versucht zu speichern
+			String responseMessage = "";
 
-		request.setAttribute(Constants.ATTR_MSG, responseMessage);
+			TaskBean bean = new TaskBean();
+			bean.setTaskTitle(request.getParameter(Constants.PARAM_TITLE));
+			bean.setTaskInfo(request.getParameter(Constants.PARAM_INFO));
+			boolean done = request.getParameter(Constants.PARAM_DONE) != null;
+			bean.setDone(done);
 
-		request.getRequestDispatcher(Constants.JSP_FORMULAR).forward(request, response);
+			ExampleFormularDataManager manager = new ExampleFormularFakeManager();
+			responseMessage = manager.saveFormular(bean);
+
+			request.getSession().setAttribute(Constants.ATTR_DATA, bean);
+
+			request.setAttribute(Constants.ATTR_MSG, responseMessage);
+
+			request.getRequestDispatcher(Constants.JSP_FORMULAR).forward(request, response);
+		}
 	}
 
 	/**

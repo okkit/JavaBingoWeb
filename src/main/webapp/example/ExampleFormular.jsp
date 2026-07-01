@@ -50,7 +50,7 @@ if (msg == null)
 				<input id="done" name="<%=Constants.PARAM_DONE%>" type="checkbox" <%if (done) out.print("checked=\"on\"");%> />
 			</div>
 			<div>
-				<button type="submit"><%=Constants.LABEL_SAVE%></button>
+				<button type="submit" name ="save" value="save"><%=Constants.LABEL_SAVE%></button>
 			</div>
 			
 		</form>

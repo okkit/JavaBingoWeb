@@ -1,8 +1,12 @@
 package example.data;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import example.data.beans.TaskBean;
 import example.data.beans.TaskListBean;
-import example.data.fake.FakeDataBase;
 
 /**
  * Implementiert die Schnittstelle zwischen der GUI-Schicht und der Datenzugriffsschicht.<br>
@@ -41,17 +45,42 @@ public class ExampleFormularFakeManager implements ExampleFormularDataManager {
 	}
 
 	@Override
-	public TaskListBean loadTaskList() {
+	/**
+	 * Simuliert einen Zugriff auf eine relationale DB:<br>
+	 * ähnlich wie "select id, title from taskTable;"<br>
+	 * Das Ergebnis wir als eine List<Map<Integer, String>> geliefert.<br>
+	 * In Map<Integer, String> entspricht das Indeger-Key dem PK<br>
+	 * die String-Value dem Titel in der Tabelle TskTable.
+	 * 
+	 * Die Ergebnisse werden in eine TaskListBean-Instanz verpackt
+	 */
+	public TaskListBean loadTaskInfoList() {
+		List<Map<Integer, String>> fakeResult = new ArrayList<Map<Integer, String>>();
+
+		Map<Integer, String> map;
+		for (int i = 1; i < 10; i++) {
+			map = new HashMap<Integer, String>(1);
+			map.put(i, "Title of the Task with id " + i);
+
+			fakeResult.add(map);
+		}
 		
-		beanList = new TaskListBean();
-		beanList.setList(FakeDataBase.selectAllFromTask());
-		
-		return beanList;
+		TaskListBean list = new TaskListBean();
+		list.setList(fakeResult);
+
+		return list;
 	}
 
 	@Override
 	public TaskBean getTaskById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		TaskBean bean = new TaskBean();
+		
+		bean.setTaskTitle("Test-Task mit id " + id);
+		bean.setTaskInfo("Eine Simulation eines aus der DB geladenen Tasks");
+		bean.setDone(true);
+		bean.setId(id);
+		
+		return bean;
 	}
 }

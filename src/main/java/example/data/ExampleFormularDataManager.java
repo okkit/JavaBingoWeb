@@ -34,7 +34,7 @@ public interface ExampleFormularDataManager {
 	 * in einer Instanz der Klasse TaskListBean.
 	 * @return
 	 */
-	public TaskListBean loadTaskList();
+	public TaskListBean loadTaskInfoList();
 	
 	/**
 	 * Lädt vollständig einen Task anhand seiner id (entspricht dem PK in der MySQL DB)<br>
