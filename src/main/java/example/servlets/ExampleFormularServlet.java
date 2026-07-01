@@ -2,6 +2,7 @@ package example.servlets;
 
 import java.io.IOException;
 
+import conf.JavaBingoConfiguration;
 import example.data.ExampleFormularDataManager;
 import example.data.ExampleFormularFakeManager;
 import example.data.beans.TaskBean;
@@ -37,7 +38,9 @@ public class ExampleFormularServlet extends HttpServlet {
 				int id = Integer.parseInt((String) param);
 				
 				// Und holen den entsprechenden Task mithilfe des DataManager-Interface:
-				ExampleFormularDataManager mng = new ExampleFormularFakeManager();
+				ExampleFormularDataManager mng = JavaBingoConfiguration.getDataManager();
+				// ExampleFormularDataManager mng = new ExampleFormularFakeManager();
+				
 				TaskBean task = mng.getTaskById(id);
 				
 				// Verpacken die Bean im Request

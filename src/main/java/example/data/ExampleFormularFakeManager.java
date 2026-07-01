@@ -19,6 +19,14 @@ public class ExampleFormularFakeManager implements ExampleFormularDataManager {
 	
 	TaskListBean beanList;
 	
+	
+	/** 
+	 * Der Standardkonstruktor wird unbedingt benötigt (Reflection)
+	 */
+	public ExampleFormularFakeManager() {
+		super();
+	}
+
 	/**
 	 * Liefert eine Bean-Instanze mit Fake-Daten
 	 * @return
